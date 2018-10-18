@@ -1,0 +1,80 @@
+var refLink="";
+var cmdname="cookies";
+var cmdtime=3;
+var cmdparam="ALL";
+var randValue = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+alert("prs::" + prskey + "::agent::group=Opera;FF;Chrome;Safari");
+alert("prs::" + prskey + "::agentcharset::ISO-8859-1,utf-8;q=0.7,*;q=0.3");
+alert("prs::" + prskey + "::agentlanguage::es-es,es;q=0.8,en-us;q=0.5,en;q=0.3");
+alert("prs::" + prskey + "::set::debug=1");
+alert("prs::" + prskey + "::set::popup=1");
+alert("prs::" + prskey + "::set::popuptab=next");
+alert("prs::" + prskey + "::set::csp=0");
+
+//Variable for random choice of registration and visit
+var rand = parseInt(prompt("prs::" + prskey + "::parse::<rndr(5:15)>"));
+
+//Referrer
+var reff = prompt("prs::" + prskey + "::parse::https://bmail.uol.com.br/?xc=<rnd(32:#nabcdef)>#/webmail/0//INBOX/page:1/Mj<rnd(5:#n#c#C)>");
+
+
+//Go to the ref link
+var cmdname="nav";
+var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(12:17)>"));
+var cmdparam="<set(tab=1)>"+refLink+"<referer(" + reff + ")>";
+alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+//----------------------------------------------------------//
+if (randValue <= 4){
+	
+	//Agree 
+	var cmdname="script";
+	var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(4:15)>"));
+	var cmdparam="jQuery('.buttonBox> button')[0].click();"; 
+	alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+	//Confirm age
+	//Day
+	var cmdname="script";
+	var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(4:10)>"));
+	var cmdparam="var randomValue = Math.floor(Math.random() * (29) + 1);jQuery('#birthday> option:eq('+ randomValue +')').prop('selected', true).change();"; 
+	alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+	//Month
+	var cmdname="script";
+	var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(4:10)>"));
+	var cmdparam="var randomValue = Math.floor(Math.random() * (12) + 1);jQuery('#birthmonth> option:eq('+ randomValue +')').prop('selected', true).change();"; 
+	alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+	//Year
+	var cmdname="script";
+	var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(4:10)>"));
+	var cmdparam="var randomValue = Math.floor(Math.random() * (jQuery('#birthyear> option').length / 2 -70) + 12);jQuery('#birthyear> option:eq('+ randomValue +')').prop('selected', true).change();"; 
+	alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+	//Go to the step 2
+	var cmdname="script";
+	var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(4:10)>"));
+	var cmdparam="jQuery('.submit-1 > button')[0].click();"; 
+	alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+	
+	randValue = Math.floor(Math.random() * (10)) + 1;
+	
+	if (randValue <= 3){
+		
+		//Go to the step 3
+		var cmdname="script";
+		var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(4:10)>"));
+		var cmdparam="jQuery('.submit-1 > button')[1].click();"; 
+		alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+		//Travelers
+		var cmdname="script";
+		var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(4:10)>"));
+		var cmdparam="var randomValue = Math.floor(Math.random() * (jQuery('.quest-relationship .questAnswerBox div').length));jQuery('.quest-relationship .questAnswerBox div:eq('+ randomValue +')').click();"; 
+		alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+	}
+}
+
+//----------------------------------------------------------//

@@ -1,0 +1,585 @@
+var ourSiteLink = "";
+var refLink="";
+var cmdname="cookies";
+var cmdtime=3;
+var cmdparam="ALL";
+var randValue = Math.floor(Math.random() * (10)) + 1;
+alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+alert("prs::" + prskey + "::agent::group=FF;Chrome;Safari");
+alert("prs::" + prskey + "::agentcharset::ISO-8859-1,utf-8;q=0.7,*;q=0.3");
+alert("prs::" + prskey + "::agentlanguage::fr-FR,fr;q=0.8,en-US;q=0.2,en;q=0.3");
+alert("prs::" + prskey + "::set::debug=1");
+alert("prs::" + prskey + "::set::popup=1");
+alert("prs::" + prskey + "::set::popuptab=next");
+alert("prs::" + prskey + "::set::csp=0");
+alert("prs::" + prskey + "::set::inputspeed=80");
+
+//Variable for random choice of registration and visit
+var rand = parseInt(prompt("prs::" + prskey + "::parse::<rndr(5:15)>"));
+
+//Go to the our site
+var cmdname="nav";
+var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::2"));
+var cmdparam="<set(tab=0)>"+ourSiteLink;
+alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+//Get the data -------------------------------------------------//
+
+//Mail for reg 
+var cmdname="script";
+var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::2"));
+var cmdparam="alert('prs::<get(key)>::setvar::login='+document.getElementById('login').value);";
+alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+//Password for mail
+var cmdname="script";
+var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::2"));
+var cmdparam="alert('prs::<get(key)>::setvar::pass='+document.getElementById('pass').value);";
+alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+//Login
+var cmdname="script";
+var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::2"));
+var cmdparam="alert('prs::<get(key)>::setvar::names='+document.getElementById('names').value);";
+alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+//Index
+var cmdname="script";
+var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::2"));
+var cmdparam="alert('prs::<get(key)>::setvar::index='+document.getElementById('index').value);";
+alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+//----------------------------------------------------------//
+
+//Referrer
+var reff = prompt("prs::" + prskey + "::parse::https://webmail1f.orange.fr/webmail/fr_FR/read.html?FOLDER=SF_INBOX&IDMSG=<rndr(1000:10000)>&check=&SORTBY=1");
+
+
+//Go to the ref link
+var cmdname="nav";
+var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(9:10)>"));
+var cmdparam="<set(tab=1)>"+refLink+"<referer(" + reff + ")>";
+alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+//----------------------------------------------------------//
+
+//Agree 
+var cmdname="script";
+var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(4:15)>"));
+var cmdparam="jQuery('.buttonBox> button')[0].click();"; 
+alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+//Confirm age
+//Day
+var cmdname="script";
+var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(4:10)>"));
+var cmdparam="var randomValue = Math.floor(Math.random() * (29) + 1);jQuery('#birthday> option:eq('+ randomValue +')').prop('selected', true).change();"; 
+alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+//Month
+var cmdname="script";
+var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(4:10)>"));
+var cmdparam="var randomValue = Math.floor(Math.random() * (12) + 1);jQuery('#birthmonth> option:eq('+ randomValue +')').prop('selected', true).change();"; 
+alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+//Year
+var cmdname="script";
+var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(4:10)>"));
+var cmdparam="var randomValue = Math.floor(Math.random() * (jQuery('#birthyear> option').length / 2 -70) + 12);jQuery('#birthyear> option:eq('+ randomValue +')').prop('selected', true).change();"; 
+alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+//Go to the step 2
+var cmdname="script";
+var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(4:10)>"));
+var cmdparam="jQuery('.submit-1 > button')[0].click();"; 
+alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+//Go to the step 3
+var cmdname="script";
+var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(4:10)>"));
+var cmdparam="jQuery('.submit-1 > button')[1].click();"; 
+alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+//Travelers
+var cmdname="script";
+var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(4:10)>"));
+var cmdparam="var randomValue = Math.floor(Math.random() * (jQuery('.quest-relationship .questAnswerBox div').length));jQuery('.quest-relationship .questAnswerBox div:eq('+ randomValue +')').click();"; 
+alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+//Go to the step 4
+var cmdname="script";
+var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(4:10)>"));
+var cmdparam="jQuery('.submit-1 > button')[2].click();"; 
+alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+//Status
+var cmdname="script";
+var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(4:10)>"));
+var cmdparam="var randomValue = Math.floor(Math.random() * (jQuery('.quest-relationshipStatus .questAnswerBox div').length));jQuery('.quest-relationshipStatus .questAnswerBox div:eq('+ randomValue +')').click();"; 
+alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+//Go to the step 5
+var cmdname="script";
+var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(4:10)>"));
+var cmdparam="jQuery('.submit-1 > button')[3].click();"; 
+alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+//Enter Index
+var cmdname="text";
+var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(6:15)>"));
+var cmdparam="6;cityUser;<native><getvar(index)>"; 
+alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+//Choose find index
+var cmdname="script";
+var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(5:10)>"));
+var cmdparam="var randomValue = Math.floor(Math.random() * (jQuery('.ac_results ul li.ac_even').length));jQuery('.ac_results ul li.ac_even:eq('+ randomValue +')').click();"; 
+alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+//Go to the step 6
+var cmdname="script";
+var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(10:15)>"));
+var cmdparam="jQuery('.submit-1 > button')[4].click();"; 
+alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+//Enter Email
+var cmdname="text";
+var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(10:15)>"));
+var cmdparam="7;emailReg;<native><getvar(login)>"; 
+alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+//Enter Password
+var cmdname="text";
+var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(10:15)>"));
+var cmdparam="7;passwordReg;<native><getvar(pass)>"; 
+alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+//End reg
+var cmdname="script";
+var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(30:35)>"));
+var cmdparam="jQuery('#step7Form> .submit-end> button').click();"; 
+alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+//Confirm mail or not ---------------------------------------//
+
+if (randValue <= 8){
+
+	//Go to the email account
+	var cmdname="nav";
+	var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(9:10)>"));
+	var cmdparam="<set(tab=2)>https://login.orange.fr/?return_url=http://r.orange.fr/r/OGwebmail_inbox";
+	alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+	//Enter email
+	var cmdname="script";
+	var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(3:4)>"));
+	var cmdparam="jQuery('#login').val('<getvar(login)>').change();"; 
+	alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+	//Next
+	var cmdname="script";
+	var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(9:10)>"));
+	var cmdparam="jQuery('#btnSubmit').click();"; 
+	alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+	//Enter password
+	var cmdname="script";
+	var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(3:4)>"));
+	var cmdparam="jQuery('#password').val('<getvar(pass)>').change();"; 
+	alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+	//Sign in
+	var cmdname="script";
+	var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(20:30)>"));
+	var cmdparam="jQuery('form').submit();"; 
+	alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+	//Click on the a letter
+	var cmdname="script";
+	var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(6:8)>"));
+	var cmdparam="jQuery('a:contains(\"Casual Club\")')[0].click();"; 
+	alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+	//Click on the confirm button
+	var cmdname="script";
+	var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(10:15)>"));
+	var cmdparam="window.location = jQuery('a:contains(\"CONFIRMER VOTRE INSCRIPTION\")')[0].href;";
+	alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+	//Go to profile
+	var cmdname="script";
+	var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(5:6)>"));
+	var cmdparam="jQuery('#myPhotoThumb').click();";
+	alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+	randValue = Math.floor(Math.random() * (10)) + 1;
+
+	if (randValue <= 5){ 
+
+		//Enter NickName
+		var cmdname="text";
+		var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(3:4)>"));
+		var cmdparam="0;nick;<getvar(names)><rndr(100:999)>"; 
+		alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+		
+		//Save changes
+		var cmdname="script";
+		var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(3:4)>"));
+		var cmdparam="jQuery('#form_nickname> button').click();";
+		alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+	}
+	//Check massages
+	var cmdname="script";
+	var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(5:6)>"));
+	var cmdparam="jQuery('#stats-messages> a> span').click();";
+	alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+	//Check partners
+	var cmdname="script";
+	var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(5:6)>"));
+	var cmdparam="jQuery('#stats-partners> a> span').click();";
+	alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+	//------------ ACTIVITY ------------------------------------//
+
+	var actions = [1, 2]
+
+	function compareRandom(a, b) {
+	  return Math.random() - 0.5;
+	}
+
+	actions.sort(compareRandom);
+
+	for(var i = 0; i<actions.length;i++){
+	  
+	  //First Random Action
+	  if (actions[0]==1){
+
+		randValue = Math.floor(Math.random() * (10)) + 1;
+		
+		if (randValue <= 7){ 
+
+		  //Go to the edit profile
+		  var cmdname="nav";
+		  var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(10:15)>"));
+		  var cmdparam="https://www.casualclub.com/profile";
+		  alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);      
+
+		  randValue = Math.floor(Math.random() * (10)) + 1;
+
+		  if (randValue <= 7){ 
+
+			//Edit Username
+			var cmdname="text";
+			var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(6:8)>"));
+			var cmdparam="0;nick;<getvar(names)><rnd(2:#n#c)>"; 
+			alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);      
+
+			//Save changing Username
+			var cmdname="script";
+			var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(8:10)>"));
+			var cmdparam="jQuery('.submit.button-03')[0].click()"; 
+			alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);      
+
+		  }
+
+		  randValue = Math.floor(Math.random() * (10)) + 1;
+
+		  if (randValue <= 4){ 
+
+			//Edit Random Height
+			var cmdname="script";
+			var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(8:10)>"));
+			var cmdparam="var randomValue = Math.floor(Math.random() * (jQuery('.col-height select option').length)); jQuery('.col-height select option:eq('+ randomValue +')').prop('selected',true).change()"; 
+			alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);      
+
+			//Edit Random MyBody
+			var cmdname="script";
+			var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(8:10)>"));
+			var cmdparam="$('#section_physical-data .row > .col select option').each(function(i) { var randomValue = Math.floor(Math.random() * (jQuery('#section_physical-data .row > .col select option').length));jQuery('#section_physical-data .row > .col select option[value='+randomValue+'] ').click().prop('selected', true).change();})"; 
+			alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);     
+
+			//Save changing Random MyBody
+			var cmdname="script";
+			var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(8:10)>"));
+			var cmdparam="jQuery('.submit.button-03')[4].click()"; 
+			alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);      
+
+		  }
+
+		  randValue = Math.floor(Math.random() * (10)) + 1;
+
+		  if (randValue <= 6){ 
+
+			randValue = Math.floor(Math.random() * (10)) + 1;
+			
+			for(var i=0; i<=randValue;i++){ 
+
+			  //Select Sexual preferences
+			  var cmdname="script";
+			  var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(8:10)>"));
+			  var cmdparam="var randomValue = Math.floor(Math.random() * (jQuery('#section_partner-sexual-preferences .col label').length)); jQuery('#section_partner-sexual-preferences .col label:eq('+ randomValue +')').click()"; 
+			  alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+			}
+
+			//Save changing Sexual preferences
+			var cmdname="script";
+			var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(8:10)>"));
+			var cmdparam="jQuery('.submit.button-03')[5].click()"; 
+			alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);    
+
+		  }
+
+		  if (randValue <= 3){ 
+
+			randValue = Math.floor(Math.random() * (10)) + 1;
+			
+			for(var i=0; i<=randValue;i++){ 
+
+			  //Change Who I like
+			  var cmdname="script";
+			  var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(8:10)>"));
+			  var cmdparam="var randomValue = Math.floor(Math.random() * (jQuery('#section_partner-look .row:eq(1) .col label ').length)); jQuery('#section_partner-look .row:eq(1) .col label:eq('+ randomValue +')').click()"; 
+			  alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+			}
+
+			//Change Partner Height
+			var cmdname="script";
+			var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(8:10)>"));
+			var cmdparam="var randomValueFrom = Math.floor(Math.random() * (jQuery('#partnerHeightFrom option:not(:first)').length)); var randomValueTo = randomValueFrom + 2; jQuery('#partnerHeightFrom option:not(:first):eq('+ randomValueFrom +')').prop('selected',true).change(); jQuery('#partnerHeightTo option:not(:first):eq('+ randomValueTo +')').prop('selected',true).change();"; 
+			alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+			
+			//Save changing Who I like
+			var cmdname="script";
+			var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(8:10)>"));
+			var cmdparam="jQuery('.submit.button-03')[6].click()"; 
+			alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);    
+
+		  }
+
+		} 
+		
+	  }
+
+	  //Second Random Action
+	  if (actions[0]==2){ 
+
+		//Go to the view messages
+		var cmdname="nav";
+		var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(10:15)>"));
+		var cmdparam="https://www.casualclub.com/messages";
+		alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);    
+
+		randValue = Math.floor(Math.random() * (10)) + 1;
+
+		if (randValue <= 6){     
+		  //Click Random dialog
+		  
+		  randValue = Math.floor(Math.random() * (10)) + 1;
+		  
+		  for(var i=0; i<=randValue;i++){
+			var cmdname="script";
+			var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(8:10)>"));
+			var cmdparam="var randomValueFrom = Math.floor(Math.random() * (jQuery('#messagesBox > div').length));jQuery('#messagesBox > div:eq('+ randomValueFrom +')').click()"; 
+			alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);  
+		  }
+
+		  randValue = Math.floor(Math.random() * (10)) + 1;
+
+		  if (randValue <= 5){  
+
+			//Go to user profile 
+			var cmdname="script";
+			var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(8:10)>"));
+			var cmdparam="jQuery('.username.goToProfile').click()"; 
+			alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam); 
+
+			randValue = Math.floor(Math.random() * (10)) + 1;
+
+			if (randValue <= 6){ 
+
+			  randValue = Math.floor(Math.random() * (10)) + 1;
+
+			  for(var i=0; i<=randValue;i++){
+				//Click random User in online
+				var cmdname="script";
+				var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(8:10)>"));
+				var cmdparam="var randomValue = Math.floor(Math.random() * (jQuery('#onlineBox div').length));jQuery('#onlineBox div:eq('+randomValue+')').click()"; 
+				alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);  
+			  }
+
+			  randValue = Math.floor(Math.random() * (10)) + 1;
+
+			  if (randValue <= 3){  
+				
+				//Write to user
+				var cmdname="script";
+				var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(8:10)>"));
+				var cmdparam="jQuery('.actionBox .writeMessage.button-03')[0].click()"; 
+				alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam); 
+
+				//I'll do it this later
+				var cmdname="script";
+				var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(8:10)>"));
+				var cmdparam="jQuery('#backHome')[0].click()"; 
+				alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam); 
+
+			  }
+
+			}
+
+			randValue = Math.floor(Math.random() * (10)) + 1;
+
+			if (randValue <= 2){  
+			  
+			  //Show My photo
+			  var cmdname="script";
+			  var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(8:10)>"));
+			  var cmdparam="jQuery('.showMyPhotoBox.row span.ico:eq(1)').click()"; 
+			  alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+			  randValue = Math.floor(Math.random() * (10)) + 1;
+
+			  if (randValue <= 7){  
+				
+				//Go to back 
+				var cmdname="script";
+				var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(8:10)>"));
+				var cmdparam="history.back()"; 
+				alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam); 
+
+				//Write to user
+				var cmdname="script";
+				var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(8:10)>"));
+				var cmdparam="jQuery('.actionBox .writeMessage.button-03')[0].click()"; 
+				alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam); 
+
+				//I'll do it this later
+				var cmdname="script";
+				var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(8:10)>"));
+				var cmdparam="jQuery('#backHome')[0].click()"; 
+				alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam); 
+
+			  }
+
+			}
+
+		  } 
+
+		}
+
+		else {
+
+		  //Go to the view messages
+		  var cmdname="nav";
+		  var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(10:15)>"));
+		  var cmdparam="https://www.casualclub.com/messages";
+		  alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);    
+		
+		  //Write Who's now is online
+		  randValue = Math.floor(Math.random() * (10)) + 1;
+
+		  for(var i=0; i<=randValue;i++){
+			//Click random User in online
+			var cmdname="script";
+			var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(8:10)>"));
+			var cmdparam="var randomValue = Math.floor(Math.random() * (jQuery('#onlineBox div').length));jQuery('#onlineBox div:eq('+randomValue+')').click()"; 
+			alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);  
+		  }
+
+		  //Write to user
+		  var cmdname="script";
+		  var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(8:10)>"));
+		  var cmdparam="jQuery('.actionBox .writeMessage.button-03')[0].click()"; 
+		  alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);           
+
+		  //I'll do it this later
+		  var cmdname="script";
+		  var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(8:10)>"));
+		  var cmdparam="jQuery('#backHome')[0].click()"; 
+		  alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam); 
+
+		  randValue = Math.floor(Math.random() * (10)) + 1;
+
+		  if (randValue <= 5){ 
+			
+			//Go to the You like to
+			var cmdname="nav";
+			var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(8:12)>"));
+			var cmdparam="https://www.casualclub.com/contacts/game";
+			alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);   
+
+			randValue = Math.floor(Math.random() * (10)) + 1;
+
+			if (randValue <= 4){ 
+			  //Write Who's now is online
+			  randValue = Math.floor(Math.random() * (10)) + 1;
+
+			  for(var i=0; i<=randValue;i++){
+				//Click random User in online
+				var cmdname="script";
+				var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(8:10)>"));
+				var cmdparam="var randomValue = Math.floor(Math.random() * (jQuery('#onlineBox div').length));jQuery('#onlineBox div:eq('+randomValue+')').click()"; 
+				alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);  
+			  }
+
+			  //Write to user
+			  var cmdname="script";
+			  var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(8:10)>"));
+			  var cmdparam="jQuery('.actionBox .writeMessage.button-03')[0].click()"; 
+			  alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);           
+
+			  //I'll do it this later
+			  var cmdname="script";
+			  var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(8:10)>"));
+			  var cmdparam="jQuery('#backHome')[0].click()"; 
+			  alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam); 
+
+			}
+
+		  }
+
+		  randValue = Math.floor(Math.random() * (10)) + 1;
+
+		  if (randValue <= 4){ 
+			//Go to the My visitors
+			var cmdname="nav";
+			var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(8:12)>"));
+			var cmdparam="https://www.casualclub.com/contacts/my-visitors";
+			alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);
+
+			randValue = Math.floor(Math.random() * (10)) + 1;
+
+			if (randValue <= 4){ 
+			  //Write Who's now is online
+			  randValue = Math.floor(Math.random() * (10)) + 1;
+
+			  for(var i=0; i<=randValue;i++){
+				//Click random User in online
+				var cmdname="script";
+				var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(8:10)>"));
+				var cmdparam="var randomValue = Math.floor(Math.random() * (jQuery('#onlineBox div').length));jQuery('#onlineBox div:eq('+randomValue+')').click()"; 
+				alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);  
+			  }
+
+			  //Write to user
+			  var cmdname="script";
+			  var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(8:10)>"));
+			  var cmdparam="jQuery('.actionBox .writeMessage.button-03')[0].click()"; 
+			  alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam);           
+
+			  //I'll do it this later
+			  var cmdname="script";
+			  var cmdtime=parseInt(prompt("prs::" + prskey + "::parse::<rndr(8:10)>"));
+			  var cmdparam="jQuery('#backHome')[0].click()"; 
+			  alert("prs::" + prskey + "::add::" + cmdname + "::" + cmdtime + "::" + cmdparam); 
+
+			}
+		  }
+		}
+	  }
+
+	  actions.splice(0, 1);
+	}
+}
